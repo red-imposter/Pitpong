@@ -1,2 +1,2 @@
 # Pitpong
-Ping pong
+это пинг понг
