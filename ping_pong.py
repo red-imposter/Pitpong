@@ -2,14 +2,14 @@ from pygame import *
 window = display.set_mode((500,500))
 
 class GameSprite(sprite.Sprite):
-    def __init__(self,img,x,y,speed)
-    super().__init__()
-    self.image = transform.scale(image.load(img),(50,50))
-    self.rect = self.image.get_rect()
-    self.rect.x = x
-    self.rect.y = y
-    self.speed = speed
-    def draw():
+    def __init__(self,img,x,y,speed):
+        super().__init__()
+        self.image = transform.scale(image.load(img),(50,50))
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+        self.speed = speed
+    def draw(self):
         window.blit(self.image,(self.rect.x,self.rect.y))
 class racketka(GameSprite):
     def update1(self):
@@ -39,7 +39,7 @@ class Ball(GameSprite):
     def update_speeds(self,speed_x,speed_y):
         self.speed.x += self.speed_x
         self.speed.y += self.speed_y
-if sprite.collide_rect(racketka1,ball):
+#if sprite.collide_rect(racketka1,ball):
 
 run = True
 clock = time.Clock()
@@ -49,9 +49,9 @@ finish = False
 back = (23, 11, 186)
 window.fill(back)
 
-racketka1 = racketka(racket.png,50,250,4)
-racketka2 = racketka(racket.png,450,250,4)
-ball = Ball(tenis_ball.png,250,250,3,3)
+racketka1 = racketka('racket.png',50,250,4)
+racketka2 = racketka('racket.png',450,250,4)
+ball = Ball('tenis_ball.png',250,250,3,3,)
 
 
 while run:
@@ -59,10 +59,10 @@ while run:
         if e.type == QUIT:
             run = False
     if finish != True:
-        window.blit()
+        racketka1.draw()
+        racketka2.draw()
         racketka1.update1()
         racketka2.update2()
 
         display.update()
         clock.tick(FPS)
-    
