@@ -49,6 +49,12 @@ speed_y = 6
 
 finish = False
 
+font.init()
+font1 = font.Font(None,70)
+win1 = font1.render('Player 1 win!', True, (255,0,0))
+font2 = font.Font(None,70)
+win2 = font2.render('Player 2 win!', True, (255,0,0))
+
 
 racketka1 = racketka('racket.png',5,250,4,50,100)
 racketka2 = racketka('racket.png',895,250,4,50,100)
@@ -73,6 +79,12 @@ while run:
             speed_x *= -1
         if ball.rect.y > 650 or ball.rect.y < 0:
             speed_y *= -1
+        if ball.rect.x > 950:
+            window.blit(win1,(340,350))
+            finish = True
+        if ball.rect.x < 0:
+            window.blit(win2,(340,350))
+            finish = True
 
         display.update()
         clock.tick(FPS)
